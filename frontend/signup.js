@@ -17,25 +17,10 @@ signbtn.addEventListener('click', (e) => {
       .then(response => {
          // console.log(response)
          alert('Signed Up Successfully');
-         // window.location = 'loginpage.html';
+         window.location = 'loginpage.html';
       })
       .catch(err => {
          // alert(err)
          console.log(err)
       })
 })
-
-
-function loginfunc(e){
-   e.preventDefault();
-
-   const email = document.getElementById('emailid').value
-   const password = document.getElementById('passid').value
-
-   const login = {
-      email: email,
-      password: password
-   }
-
-
-}
