@@ -15,23 +15,22 @@
         <h1>EXPENSE TRACKER</h1>
     </header>
 
-    <form action="noaction">
+    <form action="">
         <div class="form">
-            <h1>SIGN UP</h1>
+            <h1>Login Page</h1>
             <div class="details">
-                <input type="text" placeholder="Enter your Name">
+                <input id="emailid" type="email" placeholder="Enter your Email" required>
             </div>
             <div class="details">
-                <input type="email" placeholder="Enter your Email">
-            </div>
-            <div class="details">
-                <input type="password" placeholder="Enter your Password">
+                <input id="passid" type="password" placeholder="Enter your Password" required>
             </div>
             <div class="SignUPbtn">
-                <button id="signbtn" > SIGN UP</button>
+                <button id="loginbtn" onclick="loginfunc()" > Login </button>
             </div>
         </div>
     </form>
+    <label for="">Didn't have an account. Sign Up! - </label>
+    <a href="signup.html">Click here</a>
 
 </body>
 
