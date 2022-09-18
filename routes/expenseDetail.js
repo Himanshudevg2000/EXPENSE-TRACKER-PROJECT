@@ -8,6 +8,6 @@ router.post('/expense', expensecontroller.expense)
 
 router.get('/getexpense', expensecontroller.getexpense)
 
-router.get('/deleteexpense/:id', expensecontroller.deleteexpense)
+router.delete('/deleteexpense/:id', expensecontroller.deleteexpense)
 
 module.exports = router;

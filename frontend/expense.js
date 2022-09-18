@@ -42,8 +42,9 @@ document.addEventListener('DOMContentLoaded', () =>{
 function showDetail(result) {
     const parentElement = document.getElementById('getexpn')
     for(let i=0; i< result.data.result.length; i++){
-    const childElement = `<li id="domid"> expense ${result.data.result[i].id} - ${result.data.result[i].amount} - ${result.data.result[i].description} - ${result.data.result[i].category} <button onclick="deleteExpense(${result.id})"> Delete </button> </li> `
+    const childElement = `<li id="domid"> expense ${result.data.result[i].id} - ${result.data.result[i].amount} - ${result.data.result[i].description} - ${result.data.result[i].category} <button onclick="deleteExpense(${result.data.result[i].id})"> Delete </button> </li> `
     parentElement.innerHTML += childElement
+    console.log(result.data.result[i].id)
     }
 }
 
@@ -58,7 +59,10 @@ function deleteExpense(id) {
             throw new Error('failed to dlete')
         }
     })
-    .catch(err => showError(err))
+    .catch(err => {
+        showError(err)
+        // console.log("Oh No! What i did?")
+    })
 }
 
 

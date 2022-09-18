@@ -35,13 +35,14 @@ exports.getexpense = (req,res) => {
 
 exports.deleteexpense = (req,res) => {
     const id = req.params.id;
-    if(id === undefined || id.length === 0){
-        res.status(400).json({success:false,message:'nope'})
-    }
-    Expense.destroy({where: { id: id }}).then(() => {
-        return res.status(200).json({ success: true, message: "Expense Deleted"})
+    // if(id === undefined || id.length === 0){
+    //     res.status(400).json({success:false,message:'nope'})
+    // }
+    Expense.destroy({where: { id: id }}).then(result => {
+        console.log(result)
+        return res.status(204).json({ success: true, message: "Expense Deleted"})
     }).catch(err => {
         console.log(err);
-        return res.status(400).json({ success: true, message: "Expense not deleted"})
+        return res.status(400).json({ success: false, message: "Expense not deleted"})
     })
 }
