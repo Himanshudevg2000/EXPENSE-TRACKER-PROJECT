@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url(https://images.unsplash.com/photo-1508615039623-a25605d2b022?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
+    background-size: cover;
+}
+
+
+h1{
+    text-align: center;
+    position: relative;
+    top: 20px;
+}
+
+h2{
+    text-align: center;
+    padding: 0px 0px 30px 0px;
+}
+
+.container{
+    /* display: flex; */
+    margin: 120px 470px;
+    padding: 20px 40px;
+    border: 2px solid black;
+    border-radius: 30px;
+}
+
+.expnscontainer input{
+    background: none;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+input{
+    margin: 0px 20px;
+}
+
+.details{
+    padding: 20px;
+}
+
+#btn{
+    justify-content: center;
+    background: none;
+    border: 2px solid black;
+    border-radius: 8px;
+    padding: 0.1rem;
+    position: relative;
+    left: 140px;
+    top: 10px;
+}
+
+#btn:hover{
+    background-color: grey;
+    color: white;
+    border: 2px solid black;
+}
+
+::placeholder{
+    color: white;
+    opacity: 35%;
+}
+
+select{
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+select option{
+    background-color: lightgray;
+}
+
+
+#getexpn{
+    background: none;
+    text-align: center;
+    margin: 0px 500px;
+}
+
+#domid{
+    border: 2px solid black;
+    padding: 6px;
+    border-radius: 20px;
+    margin: 10px 0px;
+}
+
+#domid:hover{
+    background-color: black;
+    color: white;
+}

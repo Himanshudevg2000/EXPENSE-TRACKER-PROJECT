@@ -6,15 +6,18 @@ const bodyParser = require('body-parser')
 
 const sequelize = require("./models/database");
 const User = require("./models/user")
+const expense = require("./models/expense")
 
 const app = express();
 
 const details = require('./routes/detail')
+const expenseDetails = require('./routes/expenseDetail')
 
 app.use(cors())
 
 app.use(bodyParser.json());
 app.use('/detail',details)
+app.use('/expenseDetail',expenseDetails)
 
 
 sequelize
@@ -25,6 +28,9 @@ sequelize
   })
   .then(result => {
     return User.findByPk(1);
+  })
+  .then(result => {
+    return expense.findByPk(1);
   })
   .then(user=> {
     return user

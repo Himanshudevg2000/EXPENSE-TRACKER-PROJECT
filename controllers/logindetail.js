@@ -15,6 +15,9 @@ exports.signup = (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
     const saltRounds = 10;
+    if(isstringinvalid(name) || isstringinvalid(email) || isstringinvalid(password)){
+        return res.status(500).json({success:false, message:'name or email or password is missing'})
+    }
     bcrypt.hash(password,saltRounds, (err,hash) => {
         console.log(err)
         User.create({
