@@ -14,8 +14,11 @@ loginbtn.addEventListener('click', (e) => {
     
     axios.post("http://localhost:5000/detail/login" , logindetails)
     .then(response => {
-            alert(response.data.message)
-            window.location = "expense.html"
+            console.log(response)
+            alert(response.data.message);
+            console.log(response.data.token)
+            localStorage.setItem('token',response.data.token);
+            window.location = "expense.html";
             console.log(response)
     })
     .catch(err => {

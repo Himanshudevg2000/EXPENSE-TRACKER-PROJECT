@@ -1,5 +1,6 @@
-const User = require('../models/user')
+const User = require('../models/user');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 function isstringinvalid(string){
     if(string == undefined || string.length === 0){
@@ -36,6 +37,10 @@ exports.signup = (req,res) => {
     })
 }
 
+function generateAccessToken(id) {
+    return jwt.sign({userid:id}, 'expensetrackerproject2')
+}
+
 exports.login = (req,res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -49,10 +54,12 @@ exports.login = (req,res) => {
             if(response.length > 0){
                 bcrypt.compare(password,response[0].password, (err,result) => {
                     if(err){
-                        return res.json({success:true, message:'Something Wrong'})
+                        return res.json({success:false, message:'Something Wrong'})
                     }
                     if(result === true) {
-                        res.status(200).json({success:true, message:'login Successfully'})
+                        const jwttoken = generateAccessToken(response[0].id)
+                        console.log(jwttoken)
+                        res.status(200).json({token: jwttoken, success:true, message:'login Successfully'})
                     }else{
                         return res.status(400).json({success: false, message:'password is incorrect'})
                     }

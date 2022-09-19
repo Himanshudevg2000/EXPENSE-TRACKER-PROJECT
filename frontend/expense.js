@@ -13,7 +13,8 @@ btn.addEventListener('click', (e) => {
         category: category
     }
 
-    axios.post("http://localhost:5000/expenseDetail/expense", expensedetail)
+    const token = localStorage.getItem('token');
+    axios.post("http://localhost:5000/expenseDetail/expense", expensedetail, { headers: {"Authorization" : token} })
         .then(result => {
             alert("expense added")
             console.log(result)
@@ -24,7 +25,8 @@ btn.addEventListener('click', (e) => {
 })
 
 document.addEventListener('DOMContentLoaded', () =>{
-    axios.get("http://localhost:5000/expenseDetail/getexpense")
+    const token = localStorage.getItem('token');
+    axios.get("http://localhost:5000/expenseDetail/getexpense", {headers: {"Authorization": token}})
         .then(result => {
             
             // const parentElement = document.getElementById('getexpn')
@@ -50,7 +52,8 @@ function showDetail(result) {
 
 
 function deleteExpense(id) {
-    axios.delete(`http://localhost:5000/expenseDetail/deleteexpense/${id}`)
+    const token = localStorage.getItem('token')
+    axios.delete(`http://localhost:5000/expenseDetail/deleteexpense/${id}`, {headers: {"Authorization": token}})
     .then(response => {
         if(response.status === 204){
             removeFromScreen(id)

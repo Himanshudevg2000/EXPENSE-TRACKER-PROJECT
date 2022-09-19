@@ -4,11 +4,14 @@ exports.expense = (req,res) => {
     const amount = req.body.amount
     const description = req.body.description
     const category = req.body.category
+    // const userId = req.body.id
 
-    Expense.create({
+    // Expense.create
+    req.user.createExpense({
         amount: amount,
         description: description,
         category: category
+        // userId: req.user.id
     })
     .then(result => {
         console.log(result)
@@ -21,7 +24,8 @@ exports.expense = (req,res) => {
 }
 
 exports.getexpense = (req,res) => {
-    Expense.findAll()
+    // Expense.findAll()
+    req.user.getExpenses()
         .then(result => {
             console.log(result)
             return res.status(201).json({result, success: true})

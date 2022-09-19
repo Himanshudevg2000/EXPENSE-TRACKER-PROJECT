@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 
 const sequelize = require("./models/database");
 const User = require("./models/user")
-const expense = require("./models/expense")
+const Expense = require("./models/expense")
 
 const app = express();
 
@@ -19,6 +19,9 @@ app.use(bodyParser.json());
 app.use('/detail',details)
 app.use('/expenseDetail',expenseDetails)
 
+
+User.hasMany(Expense);
+Expense.belongsTo(User);
 
 sequelize
   .sync()
