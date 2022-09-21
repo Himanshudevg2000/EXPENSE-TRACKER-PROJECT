@@ -10,9 +10,7 @@ router.post('/expense',authenticationmiddleware.authenticate, expensecontroller.
 
 router.get('/getexpense',authenticationmiddleware.authenticate, expensecontroller.getexpense)
 
-// router.get('/getallusers', expensecontroller.showExpensePremium)
-
-// router.get('/getallexpense/;id', expensecontroller.seeExpensePremium)
+router.get('/getallexpenses', expensecontroller.showExpensePremium)
 
 router.delete('/deleteexpense/:id',authenticationmiddleware.authenticate, expensecontroller.deleteexpense)
 

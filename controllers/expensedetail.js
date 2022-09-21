@@ -1,4 +1,5 @@
 const Expense = require('../models/expense')
+const User = require('../models/user')
 
 exports.expense = (req,res) => {
     const amount = req.body.amount
@@ -50,3 +51,17 @@ exports.deleteexpense = (req,res) => {
         return res.status(400).json({ success: false, message: "Expense not deleted"})
     })
 }
+
+
+
+exports.showExpensePremium = (req,res) => {
+    Expense.findAll()
+        .then(result => {
+            console.log(result)
+            return res.status(200).json({result, success: true})
+        })
+        .catch(err => {
+            console.log(err)
+            return res.status(403).json({success: false, message: 'did not get expense'})
+        })
+    }

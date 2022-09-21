@@ -40,7 +40,49 @@ window.addEventListener('DOMContentLoaded', () =>{
                     document.querySelector('.container').classList.add('premium')
                     document.getElementById('h1').classList.add('premium')
                     document.getElementById('deletebtn').classList.add('premium')
-                    
+                   
+                    document.body.innerHTML += '<button id="allexpn"> All expenses</button>'
+                    const allexpn = document.getElementById('allexpn')
+
+                    allexpn.addEventListener('click', () => {
+                        if(confirm("are u sure")){
+                            window.location = 'premiumMember.html'
+                        }
+                    })
+
+                    const logout = document.getElementById('logoutbtn')
+
+                    logout.addEventListener('click', () => {
+                        if(confirm("do u really want to logout")){
+                            window.location = 'signup.html'
+                        }
+                    })
+
+                    const btn = document.getElementById('btn');
+
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+
+                        const amount = document.getElementById('amount').value
+                        const description = document.getElementById('description').value
+                        const category = document.getElementById('category').value
+
+                        const expensedetail = {
+                            amount: amount,
+                            description: description,
+                            category: category
+                        }
+
+                        const token = localStorage.getItem('token');
+                        axios.post("http://localhost:5000/expenseDetail/expense", expensedetail, { headers: {"Authorization" : token} })
+                            .then(result => {
+                                alert("expense added")
+                                console.log(result)
+                            })
+                            .catch(err => {
+                                console.log(err)
+                            })
+                    })
                 }
                 
             console.log(result.data)
@@ -184,9 +226,6 @@ document.getElementById('premium-membership').onclick = async function (e) {
   alert(response.error.metadata.payment_id);
  });
 }
-
-
-
 
 
 const logout = document.getElementById('logoutbtn')

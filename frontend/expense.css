@@ -151,6 +151,7 @@ div h4{
     background-size: cover;
 } */
 
+
 body.premium{
     background-image: url(https://images.unsplash.com/photo-1520624598504-ed830bd895d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80);
     background-size: cover;
@@ -172,12 +173,30 @@ body.premium{
     padding: 0.2rem;
     border: 2px solid black;
     border-radius: 10px;
-    /* background-color: red; */
-    /* color: white; */
-    background: none;
-}
-
-#logoutbtn:hover{
     background-color: red;
     color: white;
+    /* background: none; */
 }
+
+/* #logoutbtn:hover{
+    background-color: red;
+    color: white;
+} */
+
+
+#allexpn{
+    padding: 0.3rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    right: 120px;
+    /* background: none; */
+    background-color: grey;
+    color: white;
+}
+
+/* #allexpn:hover{
+    background-color: grey;
+    color: white;
+} */

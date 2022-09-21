@@ -35,15 +35,7 @@ sequelize
   .then(() => {
     app.listen(5000);
   })
-  // .then(result => {
-  //   return User.findByPk(1);
-  // })
-  // .then(result => {
-  //   return expense.findByPk(1);
-  // })
-  // .then(user=> {
-  //   return user
-  // })
+
   .catch(err => {
     console.log(err);
   });
