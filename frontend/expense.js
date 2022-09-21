@@ -24,16 +24,25 @@ btn.addEventListener('click', (e) => {
         })
 })
 
-document.addEventListener('DOMContentLoaded', () =>{
+window.addEventListener('DOMContentLoaded', () =>{
     const token = localStorage.getItem('token');
     axios.get("http://localhost:5000/expenseDetail/getexpense", {headers: {"Authorization": token}})
         .then(result => {
-            
+            console.log(result.data)
             // const parentElement = document.getElementById('getexpn')
             // for(let i=0; i< result.data.result.length; i++){
                 // parentElement.innerHTML += `<li id="domid"> expense - ${result.data.result[i].amount} - ${result.data.result[i].description} - ${result.data.result[i].category}  </li>`
+                // }
                 showDetail(result)
-            // }
+                if(result.data.user.ispremiumuser){
+                    document.getElementById('body').classList.add('premium')
+                    document.getElementById('premium-membership').remove()
+                    document.querySelector('.container').classList.add('premium')
+                    document.getElementById('h1').classList.add('premium')
+                    document.getElementById('deletebtn').classList.add('premium')
+                    
+                }
+                
             console.log(result.data)
         })
         .catch(err => {
@@ -44,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 function showDetail(result) {
     const parentElement = document.getElementById('getexpn')
     for(let i=0; i< result.data.result.length; i++){
-    const childElement = `<li id="domid"> expense ${result.data.result[i].id} - ${result.data.result[i].amount} - ${result.data.result[i].description} - ${result.data.result[i].category} <button onclick="deleteExpense(${result.data.result[i].id})"> Delete </button> </li> `
+    const childElement = `<ul id="domid">  ${result.data.result[i].amount} - ${result.data.result[i].description} - ${result.data.result[i].category} <button id="deletebtn" onclick="deleteExpense(${result.data.result[i].id})"> Delete </button> </ul> `
     parentElement.innerHTML += childElement
     console.log(result.data.result[i].id)
     }
@@ -77,3 +86,113 @@ function removeFromScreen(id){
 function showError(err){
     document.body.innerHTML += `<div style="color:red"> ${err} </div>`
 }
+
+// const prembtn = document.getElementById('premium-membership')
+// prembtn.addEventListener('click', (e) => {
+//     const token = localStorage.getItem('token')
+//     axios.get('http://localhost:5000/purchase/premiummembership', { headers: {"Authorization" : token} })
+//     .then(response => {
+
+//         console.log(response);
+//         var options =
+//     {
+//      "key": 'rzp_test_krYxAdG23WH3Ob',
+//      "name": "Test Company",
+//      "order_id": response.data.order.id,
+//      "prefill": {
+//          "name": "Test User",
+//          "email": "test.user@example.com",
+//          "contact": "7003442036"
+//         },
+//         "theme": {
+//             "color": "#3399cc"
+//         },
+        
+//         "handler": function (response) {
+//             console.log(response);
+//             axios.post('http://localhost:5000/purchase/updatetransactionstatus',{
+//                 order_id: options.order_id,
+//                 payment_id: response.razorpay_payment_id,
+//             }, { headers: {"Authorization" : token} })
+//             .then(() => {
+//                 alert('You are a Premium User Now')
+//             }).catch(() => {
+//                 alert('Something went wrong. Try Again!!!')
+//             })
+//         },
+//     };
+// })
+//     const rzp1 = new Razorpay(options);
+//     rzp1.open();
+//     e.preventDefault();
+    
+//     rzp1.on('payment.failed', function (response){
+// //         alert(response.error.code);
+// //         alert(response.error.description);
+// //         alert(response.error.source);
+// //         alert(response.error.step);
+// //         alert(response.error.reason);
+// //   alert(response.error.metadata.order_id);
+// //   alert(response.error.metadata.payment_id);
+// console.log(response)
+//  });
+// })
+
+
+document.getElementById('premium-membership').onclick = async function (e) {
+    const token = localStorage.getItem('token')
+    const response  = await axios.get('http://localhost:5000/purchase/premiummembership', { headers: {"Authorization" : token} });
+    console.log(response);
+    var options =
+    {
+     "key": response.data.key_id,
+     "name": "Test Company",
+     "order_id": response.data.order.id,
+     "prefill": {
+       "name": "Test User",
+       "email": "test.user@example.com",
+       "contact": "7003442036"
+     },
+     "theme": {
+      "color": "#3399cc"
+     },
+     "handler": function (response) {
+         console.log(response);
+         axios.post('http://localhost:5000/purchase/updatetransactionstatus',{
+             order_id: options.order_id,
+             payment_id: response.razorpay_payment_id,
+         }, { headers: {"Authorization" : token} }).then(() => {
+             alert('You are a Premium User Now')
+             document.getElementById('body').classList.add('premium')
+             document.getElementById('premium-membership').remove()
+         }).catch(() => {
+             alert('Something went wrong. Try Again!!!')
+         })
+     },
+  };
+  const rzp1 = new Razorpay(options);
+  rzp1.open();
+  e.preventDefault();
+
+  rzp1.on('payment.failed', function (response){
+  alert(response.error.code);
+  alert(response.error.description);
+  alert(response.error.source);
+  alert(response.error.step);
+  alert(response.error.reason);
+  alert(response.error.metadata.order_id);
+  alert(response.error.metadata.payment_id);
+ });
+}
+
+
+
+
+
+const logout = document.getElementById('logoutbtn')
+
+logout.addEventListener('click', () => {
+    if(confirm("do u really want to logout")){
+        window.location = 'signup.html'
+    }
+})

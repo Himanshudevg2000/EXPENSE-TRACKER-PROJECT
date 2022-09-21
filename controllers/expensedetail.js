@@ -28,7 +28,7 @@ exports.getexpense = (req,res) => {
     req.user.getExpenses()
         .then(result => {
             console.log(result)
-            return res.status(201).json({result, success: true})
+            return res.status(201).json({result, success: true, user: req.user})
         })
         .catch(err => {
             console.log(err)

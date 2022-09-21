@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="expense.css">
     <script src="expense.js" defer></script>
 </head>
-<body>
+<body id="body">
     <header>
-        <h1>EXPENSE TRACKER</h1>
+        <h1 id="h1">EXPENSE TRACKER</h1>
     </header>
 
     <div class="container">
@@ -41,9 +41,22 @@
     </div>
 
     <div class="getexpense">
+        <!-- <h1>YOUR EXPENSES</h1> -->
+        <!-- <h4>AMOUNT </h4>
+        <h4>DESCRIPTION</h4>
+        <h4> CATEGORY </h4> -->
         <ul id="getexpn"> </ul>
     </div>
+
+    <div class="premiumbtn">
+        <button id="premium-membership">Buy Premium membership</button>
+    </div>
+
+    <div class="logout">
+        <button id="logoutbtn"> LOG OUT</button>
+    </div>
     
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
         ></script>
 </body>
