@@ -16,7 +16,7 @@ const forgotpassword = async (req, res) => {
                     throw new Error(err)
                 })
 
-            sgMail.setApiKey('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')
+            sgMail.setApiKey('sendgridkey')
 
             const msg = {
                 to: email,
