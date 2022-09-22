@@ -40,13 +40,24 @@ window.addEventListener('DOMContentLoaded', () =>{
                     document.querySelector('.container').classList.add('premium')
                     document.getElementById('h1').classList.add('premium')
                     document.getElementById('deletebtn').classList.add('premium')
+                    document.getElementById('getexpn').classList.add('premium')
+
                    
-                    document.body.innerHTML += '<button id="allexpn"> All expenses</button>'
+                    document.body.innerHTML += '<button id="allexpn"> All expenses</button> <button id="reportbtn"> Report </button> '
                     const allexpn = document.getElementById('allexpn')
 
                     allexpn.addEventListener('click', () => {
-                        if(confirm("are u sure")){
+                        if(confirm("Do u want to see all expenses")){
                             window.location = 'premiumMember.html'
+                        }
+                    })
+
+                    // document.body.innerHTML += '<button id="reportbtn"> Report </button>'
+                    const reportbtn = document.getElementById('reportbtn')
+
+                    reportbtn.addEventListener('click', () =>{
+                        if(confirm("Do u want to see report")){
+                            window.location = 'report.html'
                         }
                     })
 
@@ -54,7 +65,7 @@ window.addEventListener('DOMContentLoaded', () =>{
 
                     logout.addEventListener('click', () => {
                         if(confirm("do u really want to logout")){
-                            window.location = 'signup.html'
+                            window.location = 'loginpage.html'
                         }
                     })
 
@@ -83,6 +94,8 @@ window.addEventListener('DOMContentLoaded', () =>{
                                 console.log(err)
                             })
                     })
+
+
                 }
                 
             console.log(result.data)
@@ -232,6 +245,6 @@ const logout = document.getElementById('logoutbtn')
 
 logout.addEventListener('click', () => {
     if(confirm("do u really want to logout")){
-        window.location = 'signup.html'
+        window.location = 'loginpage.html'
     }
 })

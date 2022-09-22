@@ -14,4 +14,8 @@ router.get('/getallexpenses', expensecontroller.showExpensePremium)
 
 router.delete('/deleteexpense/:id',authenticationmiddleware.authenticate, expensecontroller.deleteexpense)
 
+router.get('/getDailyExpenses', authenticationmiddleware.authenticate, expensecontroller.getDailyExpenses)
+
+router.get('/getWeeklyExpenses', authenticationmiddleware.authenticate, expensecontroller.getWeeklyExpenses)
+
 module.exports = router;

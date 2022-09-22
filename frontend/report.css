@@ -1,0 +1,57 @@
+.show{
+    display: flex;
+}
+
+body{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    /* background-image: url(https://images.unsplash.com/photo-1520624598504-ed830bd895d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80); */
+    background-image: url(https://img.freepik.com/free-photo/plain-smooth-maroon-paper-background_53876-128606.jpg?size=626&ext=jpg&ga=GA1.2.1253930812.1663846511);
+    background-size: cover;
+    color: white;
+}
+
+
+h4{
+padding: 0px 20px;
+}
+
+.box{
+    display: flex;
+}
+
+.showbox{
+    display: flex;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin: 0px 300px;
+}
+
+.container{
+    display: flex;
+    /* padding: 20px; */
+}
+.a{
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+}
+
+.showbox2{
+    display: flex;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin: 0px 300px;
+}
+
+#backbtn{
+    padding: 0.3rem;
+    border: 2px solid black;
+    border-radius: 10px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background-color: grey;
+    color: white;
+}

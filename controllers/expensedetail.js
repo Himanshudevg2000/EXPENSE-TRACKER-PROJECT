@@ -1,5 +1,7 @@
 const Expense = require('../models/expense')
 const User = require('../models/user')
+const Sequelize = require('sequelize')
+const Op = Sequelize.Op
 
 exports.expense = (req,res) => {
     const amount = req.body.amount
@@ -65,3 +67,50 @@ exports.showExpensePremium = (req,res) => {
             return res.status(403).json({success: false, message: 'did not get expense'})
         })
     }
+
+
+
+exports.getDailyExpenses = (req, res)=>{
+    //console.log(req.user.id)
+    const today = new Date().setHours(0,0,0,0)
+    const now = new Date()
+
+    req.user.getExpenses
+    // Expense.findAll
+    ({
+        where:{
+            createdAt:{
+                [Op.gt]: today,
+                [Op.lt]: now
+            }
+        }
+    })
+    .then(result=>{
+        //console.log(result)
+        res.json(result)
+    })
+    
+}
+
+
+exports.getWeeklyExpenses = (req, res)=>{
+    //console.log(req.user.id)
+    const todayDate = new Date().getDate()
+    const lastWeek  = new Date().setDate(todayDate-7)
+    const now = new Date()
+
+    // Expense.findAll
+    req.user.getExpenses
+    ({
+        where:{
+            createdAt:{
+                [Op.gt]: lastWeek,
+                [Op.lt]: (now)
+            }
+        }
+    })
+    .then(result=>{
+        //console.log(result)
+        res.json(result)
+    })
+}

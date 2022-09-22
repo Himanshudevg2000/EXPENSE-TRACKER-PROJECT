@@ -20,6 +20,14 @@ h1 {
     font-weight: bold;
 }
 
+.forget{
+    padding: 10px;
+}
+
+.b{
+    padding: 10px;
+}
+
 .form {
     background: none;
     margin: 100px 480px;
